@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+Note: This XML document is an example Coherence Cache Configuration deployment
+descriptor that should be customized (or replaced) for your particular caching
+requirements. The cache mappings and schemes declared in this descriptor are
+strictly for demonstration purposes and are not required.
+
+For detailed information on each of the elements that can be used in this
+descriptor please see the Coherence Cache Configuration deployment descriptor
+guide included in the Coherence distribution or the "Cache Configuration
+Elements" page on the Coherence Wiki (http://wiki.tangosol.com).
+-->
+<cache-config>
+	<caching-scheme-mapping>
+		<cache-mapping>
+			<cache-name>SimpleTriggers</cache-name>
+			<scheme-name>site-distributed-cache</scheme-name>
+		</cache-mapping>
+		<cache-mapping>
+			<cache-name>CronTriggers</cache-name>
+			<scheme-name>site-distributed-cache</scheme-name>
+		</cache-mapping>
+		<cache-mapping>
+			<cache-name>CacheMonitoring</cache-name>
+			<scheme-name>site-distributed-cache</scheme-name>
+		</cache-mapping>
+	</caching-scheme-mapping>
+	<caching-schemes>
+		<distributed-scheme>
+			<scheme-name>site-distributed-cache</scheme-name>
+			<service-name>DistributedCache</service-name>
+			<serializer>
+				<class-name>com.tangosol.io.pof.ConfigurablePofContext</class-name>
+				<init-params>
+					<init-param>
+						<param-type>String</param-type>
+						<param-value>quartz-pof-config.xml</param-value>
+					</init-param>
+				</init-params>
+			</serializer>			
+			<backing-map-scheme>
+				<local-scheme/>
+			</backing-map-scheme>
+			<autostart>true</autostart>			
+		</distributed-scheme>
+	</caching-schemes>	
+</cache-config>
